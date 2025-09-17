@@ -22,7 +22,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     <div className="container max-w-3xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <article>
         <header className="mb-8 text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl mb-4">
+          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl mb-4 font-headline">
             {post.title}
           </h1>
           <div className="text-sm text-muted-foreground">
