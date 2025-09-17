@@ -15,7 +15,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <article className="container max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <article className="container max-w-3xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <header className="mb-8 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl mb-4">
           {post.title}
