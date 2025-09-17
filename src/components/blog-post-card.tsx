@@ -10,7 +10,7 @@ interface BlogPostCardProps {
 export function BlogPostCard({ post }: BlogPostCardProps) {
   return (
     <Link href={`/blog/${post.slug}`} className="block group">
-      <Card className="transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 border-0 shadow-none rounded-none bg-transparent">
+      <Card className="transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 bg-card border-border rounded-lg p-6">
         <CardHeader className="p-0">
           <CardTitle className="text-2xl font-bold group-hover:text-primary">{post.title}</CardTitle>
           <CardDescription>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} by {post.author}</CardDescription>
