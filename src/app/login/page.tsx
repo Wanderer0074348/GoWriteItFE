@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { GoogleIcon } from "@/components/icons/google";
-import Image from "next/image";
+import { MessagesSquare } from "lucide-react";
 
 export default function LoginPage() {
   return (
@@ -36,14 +36,7 @@ export default function LoginPage() {
         <div className="text-center px-12">
             <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl mb-4">Let's connect.</h2>
             <p className="text-lg text-muted-foreground">Share your thoughts, leave comments, and engage with the community.</p>
-            <Image
-                src="https://picsum.photos/seed/login/600/400"
-                alt="Abstract art"
-                width={600}
-                height={400}
-                data-ai-hint="abstract art"
-                className="mt-8 rounded-lg shadow-2xl"
-            />
+            <MessagesSquare className="mx-auto mt-8 h-48 w-48 text-primary/20" />
         </div>
       </div>
     </div>
