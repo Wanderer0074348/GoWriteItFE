@@ -22,7 +22,9 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased min-h-screen bg-background text-foreground">
         <Header />
-        <main>{children}</main>
+        <main className="py-16">
+          {children}
+        </main>
         <Toaster />
       </body>
     </html>

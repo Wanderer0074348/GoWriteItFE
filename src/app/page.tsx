@@ -3,7 +3,7 @@ import { BlogPostCard } from '@/components/blog-post-card';
 
 export default function Home() {
   return (
-    <div className="container max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+    <div className="container max-w-4xl mx-auto">
       <header className="text-center mb-12">
         <h1 className="text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl">
           GoWriteIt Blog
