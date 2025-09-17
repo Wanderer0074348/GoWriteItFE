@@ -12,7 +12,7 @@ export default function Home() {
           Thoughts, stories, and ideas from the GoWriteIt team.
         </p>
       </header>
-      <div className="space-y-12">
+      <div className="space-y-8">
         {blogPosts.map((post) => (
           <BlogPostCard key={post.id} post={post} />
         ))}
