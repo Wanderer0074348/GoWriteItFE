@@ -31,7 +31,7 @@ export default function RootLayout({
         >
           <div className="relative flex min-h-screen flex-col bg-background">
             <Header />
-            <main className="flex-1 py-8 md:py-12">
+            <main className="flex-1 pb-8 md:pb-12">
               {children}
             </main>
             <ThemeToggle />
