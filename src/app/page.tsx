@@ -8,7 +8,7 @@ export default function Home() {
         <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
           Welcome!
         </h1>
-        <p className="mt-4 text-lg text-muted-foreground md:text-xl">
+        <p className="mt-4 text-lg text-chelsea-blue md:text-xl">
           My thoughts, stories, and ideas.
         </p>
       </header>
