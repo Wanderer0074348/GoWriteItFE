@@ -1,8 +1,15 @@
+'use client';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { PenSquare } from 'lucide-react';
+import { PenSquare, User } from 'lucide-react';
+import { useUser } from '@/hooks/use-user';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from './ui/dropdown-menu';
 
 export function Header() {
+  const user = useUser();
+
   return (
     <header className="sticky top-6 z-50 w-full flex justify-center">
       <div className="w-full max-w-4xl lg:w-3/5">
@@ -15,9 +22,33 @@ export function Header() {
             {/* Add other nav links here if needed */}
           </nav>
           <div className="flex items-center justify-end space-x-4">
-            <Button asChild>
-              <Link href="/login">Login</Link>
-            </Button>
+            {user.isLoggedIn ? (
+               <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                    <Avatar className="h-8 w-8">
+                      <AvatarImage src={user.avatar} alt={user.name} />
+                      <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56" align="end" forceMount>
+                  <DropdownMenuLabel className="font-normal">
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-medium leading-none">{user.name}</p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    Log out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Button asChild>
+                <Link href="/login">Login</Link>
+              </Button>
+            )}
           </div>
         </div>
       </div>
