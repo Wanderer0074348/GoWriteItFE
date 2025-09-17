@@ -9,16 +9,16 @@ export default function LoginPage() {
       <div className="flex items-center justify-center py-12">
         <div className="mx-auto grid w-[350px] gap-6">
           <div className="grid gap-2 text-center">
-            <h1 className="text-3xl font-bold">Login</h1>
+            <h1 className="text-3xl font-bold">Join the Conversation</h1>
             <p className="text-balance text-muted-foreground">
-              Log in to your GoWriteIt account to join the conversation
+              Sign in to leave comments and connect with me.
             </p>
           </div>
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl">Connect</CardTitle>
+              <CardTitle className="text-2xl">Connect with Google</CardTitle>
               <CardDescription>
-                Sign in with your Google account to continue.
+                Use your Google account to join the community.
               </CardDescription>
             </CardHeader>
             <CardContent>
