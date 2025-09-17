@@ -3,12 +3,12 @@ import { BlogPostCard } from '@/components/blog-post-card';
 
 export default function Home() {
   return (
-    <div className="container max-w-4xl mx-auto">
+    <div className="container max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <header className="text-center mb-12">
-        <h1 className="text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl">
+        <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
           Welcome!
         </h1>
-        <p className="mt-4 text-xl text-muted-foreground">
+        <p className="mt-4 text-lg text-muted-foreground md:text-xl">
           My thoughts, stories, and ideas.
         </p>
       </header>

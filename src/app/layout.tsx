@@ -29,12 +29,14 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
         >
-          <Header />
-          <main className="py-16">
-            {children}
-          </main>
-          <ThemeToggle />
-          <Toaster />
+          <div className="relative flex min-h-screen flex-col bg-background">
+            <Header />
+            <main className="flex-1 py-8 md:py-12">
+              {children}
+            </main>
+            <ThemeToggle />
+            <Toaster />
+          </div>
         </ThemeProvider>
       </body>
     </html>
