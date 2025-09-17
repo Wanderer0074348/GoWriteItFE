@@ -22,9 +22,9 @@ Stay tuned for more tips and tricks on how to get the most out of CodeCanvas!`,
     slug: 'the-power-of-syntax-sorcerer',
     title: 'The Power of SyntaxSorcerer for Clean Code',
     excerpt: 'Learn how to leverage SyntaxSorcerer to automatically format, lint, and beautify your codebase with a single command.',
-    content: `Are you tired of arguing about code style in pull requests? SyntaxSorcerer is here to put an end to the debate. This powerful tool integrates with your CI/CD pipeline to enforce a consistent code style across your entire organization.
+    content: `## Are you tired of arguing about code style in pull requests? SyntaxSorcerer is here to put an end to the debate. This powerful tool integrates with your CI/CD pipeline to enforce a consistent code style across your entire organization.
 
-Getting started is simple. Just install the SyntaxSorcerer package and create a configuration file. You can choose from popular style guides like Airbnb, Google, or create your own custom ruleset.
+> Getting started is simple. Just install the SyntaxSorcerer package and create a configuration file. You can choose from popular style guides like Airbnb, Google, or create your own custom ruleset.
 
 One of the most loved features is its 'autofix' capability. Running \`npx syntax-sorcerer --fix\` will automatically correct most linting errors, saving you hours of tedious manual work. It's like having a magical assistant that tidies up your code for you.
 

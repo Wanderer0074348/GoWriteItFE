@@ -13,7 +13,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
       <Card className="transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 bg-card border-transparent rounded-lg p-6">
         <CardHeader className="p-0">
           <CardTitle className="text-2xl font-bold group-hover:text-primary font-headline">{post.title}</CardTitle>
-          <CardDescription>{new Date(post.date).toLocaleDate-String('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} by {post.author}</CardDescription>
+          <CardDescription>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} by {post.author}</CardDescription>
         </CardHeader>
         <CardContent className="p-0">
           <p className="text-muted-foreground mt-4">{post.excerpt}</p>
