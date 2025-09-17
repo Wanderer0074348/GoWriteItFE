@@ -12,7 +12,7 @@ export function AnimatedBackground() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let width = canvas.width = window.innerWidth / 2;
+    let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
     let particles: Particle[] = [];
 
@@ -25,11 +25,7 @@ export function AnimatedBackground() {
       }
     });
 
-    const parent = canvas.parentElement;
-    if(parent) {
-      resizeObserver.observe(parent);
-    }
-
+    resizeObserver.observe(canvas);
 
     class Particle {
       x: number;
@@ -49,14 +45,18 @@ export function AnimatedBackground() {
       }
 
       update() {
+        if (this.x > width || this.x < 0) {
+            this.speedX = -this.speedX;
+        }
+        if (this.y > height || this.y < 0) {
+            this.speedY = -this.speedY;
+        }
         this.x += this.speedX;
         this.y += this.speedY;
-
-        if (this.size > 0.2) this.size -= 0.1;
       }
 
       draw() {
-        if (ctx && this.size > 0) {
+        if (ctx) {
           ctx.fillStyle = this.color;
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -66,17 +66,42 @@ export function AnimatedBackground() {
     }
 
     function init() {
+        particles = [];
       for (let i = 0; i < 100; i++) {
-        const size = Math.random() * 5 + 1;
+        const size = Math.random() * 2 + 1;
         const x = Math.random() * (width - size * 2) + size;
         const y = Math.random() * (height - size * 2) + size;
-        const speedX = Math.random() * 1 - 0.5;
-        const speedY = Math.random() * 1 - 0.5;
-        const color = getComputedStyle(document.documentElement).getPropertyValue('--primary-foreground').trim();
+        const speedX = Math.random() * 0.4 - 0.2;
+        const speedY = Math.random() * 0.4 - 0.2;
         
-        particles.push(new Particle(x, y, size, speedX, speedY, `hsl(${color} / ${Math.random() * 0.5 + 0.2})`));
+        const isDark = document.documentElement.classList.contains('dark');
+        const color = isDark ? '240 4.8% 95.9%' : '240 5.9% 10%';
+
+        particles.push(new Particle(x, y, size, speedX, speedY, `hsl(${color} / ${Math.random() * 0.3 + 0.1})`));
       }
     }
+    
+    function connect() {
+        let opacityValue = 1;
+        for(let a = 0; a < particles.length; a++) {
+            for (let b = a; b < particles.length; b++) {
+                let distance = ((particles[a].x - particles[b].x) * (particles[a].x - particles[b].x))
+                + ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
+                if (distance < (width/7) * (height/7)) {
+                    opacityValue = 1 - (distance/20000);
+                    if (ctx) {
+                        ctx.strokeStyle = `rgba(var(--foreground-rgb), ${opacityValue})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+    }
+
 
     function animate() {
       if (ctx) {
@@ -84,20 +109,8 @@ export function AnimatedBackground() {
         for (let i = 0; i < particles.length; i++) {
           particles[i].update();
           particles[i].draw();
-
-          if (particles[i].size <= 0.3) {
-            particles.splice(i, 1);
-            i--;
-            
-            const size = Math.random() * 5 + 1;
-            const x = Math.random() * (width - size * 2) + size;
-            const y = height + size;
-            const speedX = Math.random() * 1 - 0.5;
-            const speedY = Math.random() * -1 -0.5;
-            const color = getComputedStyle(document.documentElement).getPropertyValue('--primary-foreground').trim();
-            particles.push(new Particle(x, y, size, speedX, speedY, `hsl(${color} / ${Math.random() * 0.5 + 0.2})`));
-          }
         }
+        connect();
       }
       requestAnimationFrame(animate);
     }
@@ -105,12 +118,23 @@ export function AnimatedBackground() {
     init();
     animate();
 
+    const themeObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'class') {
+                init();
+            }
+        });
+    });
+
+    themeObserver.observe(document.documentElement, {
+        attributes: true
+    });
+
     return () => {
-      if (parent) {
-        resizeObserver.unobserve(parent);
-      }
+      resizeObserver.unobserve(canvas);
+      themeObserver.disconnect();
     }
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full bg-zinc-900" />;
+  return <canvas ref={canvasRef} className="fixed inset-0 w-full h-full -z-10 bg-background" />;
 }
