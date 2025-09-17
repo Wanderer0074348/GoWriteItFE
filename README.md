@@ -10,3 +10,5 @@ The front-end structure and styling are in place. The app currently uses mock da
 
 - [ ] **Backend Integration:** Connect the application to a backend service for user authentication and data persistence.
 - [ ] **Remove Mock Data:** Replace all placeholder content and mock data for blog posts and comments with data from the backend.
+
+# Prototyped by Firebase Studio
