@@ -1,4 +1,4 @@
-import type { BlogPost } from '@/lib/types';
+import type { BlogPost, Comment } from '@/lib/types';
 
 export const blogPosts: BlogPost[] = [
   {
@@ -46,5 +46,45 @@ DeployDragon supports blue-green deployments, canary releases, and feature flagg
 Furthermore, its integration with monitoring tools like Prometheus and Grafana gives you a comprehensive dashboard to monitor your application's health post-deployment. Say goodbye to deployment anxiety and let DeployDragon handle the heavy lifting.`,
     author: 'Alex Ray',
     date: '2024-07-27',
+  },
+];
+
+export const comments: Comment[] = [
+  {
+    id: 'c1',
+    postId: '1',
+    author: 'Michael Brown',
+    avatar: 'https://i.pravatar.cc/40?u=michael-brown',
+    date: '2024-07-30',
+    content: 'Great overview of CodeCanvas! The visual debugger sounds like a game-changer. Can\'t wait to try it out.',
+    replies: [
+      {
+        id: 'c3',
+        postId: '1',
+        author: 'Jane Doe',
+        avatar: 'https://i.pravatar.cc/40?u=jane-doe',
+        date: '2024-07-30',
+        content: 'Thanks, Michael! It really is. Let me know what you think once you\'ve had a chance to play with it.',
+        replies: []
+      }
+    ]
+  },
+  {
+    id: 'c2',
+    postId: '1',
+    author: 'Sarah Green',
+    avatar: 'https://i.pravatar.cc/40?u=sarah-green',
+    date: '2024-07-31',
+    content: 'The real-time collaboration feature is what sold me. We\'ve been struggling with merge conflicts on my team, and this seems like the perfect solution.',
+    replies: []
+  },
+  {
+    id: 'c4',
+    postId: '2',
+    author: 'David Chen',
+    avatar: 'https://i.pravatar.cc/40?u=david-chen',
+    date: '2024-07-29',
+    content: 'SyntaxSorcerer has saved us so much time. Our PRs are much cleaner now.',
+    replies: []
   },
 ];
