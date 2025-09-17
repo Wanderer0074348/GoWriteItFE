@@ -1,5 +1,7 @@
 import { notFound } from 'next/navigation';
 import { blogPosts } from '@/lib/mock-data';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -27,17 +29,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         </div>
       </header>
       
-      <div className="prose max-w-none mx-auto text-foreground/90">
-        {post.content.split('\n\n').map((paragraph, index) => (
-          <p key={index} className="mb-6 text-lg leading-relaxed">
-            {paragraph.split('\n').map((line, lineIndex) => (
-              <span key={lineIndex}>
-                {line}
-                <br />
-              </span>
-            ))}
-          </p>
-        ))}
+      <div className="prose dark:prose-invert max-w-none mx-auto text-foreground/90">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>
 
     </article>
