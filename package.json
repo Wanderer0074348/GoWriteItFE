@@ -73,3 +73,13 @@
 "engines": { "node": ">=14.0.0" }
 "engines": { "node": ">=14.0.0" }
 "scripts": { "build": "next build" }
+{
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
+{
+  "scripts": {
+    "build": "next build"
+  }
+}
