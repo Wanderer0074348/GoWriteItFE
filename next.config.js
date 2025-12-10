@@ -1,0 +1,1 @@
+Ensure the file exports a valid configuration object, e.g., module.exports = { reactStrictMode: true };
