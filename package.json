@@ -69,3 +69,5 @@
     "typescript": "^5"
   }
 }
+
+"engines": { "node": ">=14.0.0" }
