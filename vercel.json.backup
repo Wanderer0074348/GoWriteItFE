@@ -1,0 +1,30 @@
+{ "buildCommand": "next build" }
+Ensure there are no trailing commas, missing commas, or misplaced characters. Validate the JSON structure.
+{ "builds": [{ "src": "package.json", "use": "@vercel/next" }], "outputDirectory": "out" }
+{ "buildCommand": "next build" }
+Ensure the JSON structure is valid. Example: {
+  "version": 2,
+  "builds": [
+    { "src": "package.json", "use": "@vercel/next" }
+  ]
+}
+{
+  "version": 2,
+  "builds": [
+    { "src": "package.json", "use": "@vercel/next" }
+  ],
+  "outputDirectory": "out"
+}
+{
+  "version": 2,
+  "builds": [
+    { "src": "package.json", "use": "@vercel/next" }
+  ],
+  "buildCommand": "npm run build"
+}
+{
+  "version": 2,
+  "env": {
+    "NEXT_PUBLIC_API_URL": "https://api.example.com"
+  }
+}
